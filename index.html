@@ -29,7 +29,7 @@
   .reply .tag.edge { background:#7a8396; }
   .reply h3 { font-size:17px; margin:2px 0 8px; }
   .reply p { margin:8px 0; }
-  .reply ul { margin:6px 0; padding-left:20px; }
+  .reply ul, .reply ol { margin:6px 0; padding-left:20px; } .reply li { margin:4px 0; }
   .reply img { width:100%; max-width:560px; margin-left:auto; margin-right:auto; border-radius:8px; margin:10px 0 4px; display:block; border:1px solid var(--line); }
   .cap { font-size:13px; color:var(--sub); }
   .kv { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0 6px; }
@@ -78,7 +78,7 @@
     <img src="img/rim_p18.jpg" alt="专题第 18 页：向心力公式" loading="lazy">
   </div>
   <div class="reply">
-    <span class="tag">Heygo 的回应 · App 已有</span>
+    <span class="tag">App 已有</span>
     <h3>公式里的速度、半径、向心力，Heygo App 里都有</h3>
     <div class="kv">
       <div><b>速度</b>v</div>
@@ -104,11 +104,11 @@
     <img src="img/rim_p20.jpg" alt="专题第 20 页：Peak 点" loading="lazy">
   </div>
   <div class="reply">
-    <span class="tag">Heygo 的回应 · 数据印证</span>
+    <span class="tag">数据印证</span>
     <h3>走刃时，立刃最大的那一刻就落在滚落线上</h3>
     <p>我们把大量走刃弯叠在一起看：立刃角在板头对准滚落线的时候达到最大，向心力也在这里进入全弯最高的一段。专题说的「板头对准滚落线、立刃最大、向心力最强」三件事同时发生，在真实滑行里是成立的。</p>
-    <img src="img/f2_peak.png" alt="走刃弯的立刃角和向心力曲线，峰值落在滚落线附近" loading="lazy">
-    <p class="cap">横轴是一个弯从入弯到出弯的进度，两条线各自按最大值缩放到 1。</p>
+    <img src="img/f2_peak.png" alt="俯视一个走刃的弯，立刃最大的位置在滚落线上" loading="lazy">
+    <p class="cap">俯视一个走刃的弯，线越粗表示立刃越大，圆点是立刃最大的位置。</p>
   </div>
 </section>
 
@@ -122,16 +122,18 @@
     <img src="img/rim_p21.jpg" alt="专题第 21 页：下半弧为什么不能再继续施压" loading="lazy">
   </div>
   <div class="reply">
-    <span class="tag new">Heygo 的回应 · 已能计算，App 暂未上线</span>
-    <h3>看一个弯的压力有多少落在上半弧</h3>
-    <p>把一个弯里的向心力画成一条曲线，以板头对准滚落线的时刻为界，看压力有多少落在上半弧。这个比例就是「施压时机」：</p>
-    <ul>
-      <li><b>接近一半</b>：上半弧压起来、下半弧收回来，前后基本对称，就是专题说的「上半弧做加法、下半弧做减法」。</li>
-      <li><b>明显低于一半</b>：上半弧没压起来，力气留到了下半弧，对应专题第 21 页说的下半弧继续施压。</li>
-    </ul>
-    <img src="img/f3_timing.png" alt="走刃和搓雪的压力曲线与滚落线前压力占比分布" loading="lazy">
-    <p class="cap">上：走刃和搓雪的平均压力曲线，深色是滚落线之前的部分。下：每个弯的占比分布。</p>
-    <p>结果和专题的判断一致：走刃的弯，滚落线之前的压力大约占一半；搓雪的弯，大部分压力落在下半弧。我们逐个滑手对比过，每一位都是走刃时比自己搓雪时压得更靠前：同一个人换一种滑法，压力的位置就跟着变，说明这个比例反映的是动作本身。</p>
+    <span class="tag new">已能计算，App 暂未上线</span>
+    <h3>看一个弯的压力，有多少压在了上半弧</h3>
+    <p>思路分三步：</p>
+    <ol>
+      <li><b>把弯切成两半</b>：从入弯到板头对准滚落线是上半弧，从滚落线到出弯是下半弧。</li>
+      <li><b>把整个弯的压力加起来算 100%</b>，看上半弧分到了多少。</li>
+      <li><b>和专题的要求对照</b>：上半弧把压力一路加上去，到滚落线附近最大，下半弧再慢慢收回来，前后两半就会各占一半左右。上半弧没压起来、到下半弧才发力，上半弧的占比就会明显少于一半。</li>
+    </ol>
+    <p>这个比例就是我们说的「施压时机」。</p>
+    <img src="img/f3_timing.png" alt="走刃和搓雪的弯里，上半弧和下半弧各分到多少压力" loading="lazy">
+    <p class="cap">上：俯视一个弯，蓝色是上半弧，橙色是下半弧，线越粗表示那一段压得越狠。下：两种滑法里，上下半弧各分到的压力比例。</p>
+    <p>结果和专题的判断一致：走刃时，上半弧分到 47%，接近一半；搓雪时，上半弧只分到 35%，大部分压力落在下半弧，正是专题第 21 页说的「下半弧继续施压」。我们逐个滑手对比过，每一位都是走刃时比自己搓雪时压得更靠前：同一个人换一种滑法，压力的位置就跟着变，说明这个比例反映的是动作本身。</p>
     <div class="note">这个指标我们已经能算出来，Heygo App 里暂时还没有上线。要不要做进 App、做成什么样，想先听听你们的意见（见最后一节）。</div>
   </div>
 </section>
@@ -145,7 +147,7 @@
     <img src="img/rim_p25.jpg" alt="专题第 25 页：共振的感觉" loading="lazy">
   </div>
   <div class="reply">
-    <span class="tag">Heygo 的回应 · App 已有一部分</span>
+    <span class="tag">App 已有一部分</span>
     <h3>释放得够不够，App 里已经能看；释放得早还是晚，我们正在研究</h3>
     <p>Heygo App 里的「压力释放」看的是换刃时旧弯的压力释放得够不够、顺不顺：释放充分，换刃更轻快，下一个弯接得更顺。</p>
     <p>专题讲的「释放过早 / 过晚」是时机问题，和第 03 节的施压时机是一对：一个看什么时候压上去，一个看什么时候收回来。我们很想知道，你们在教学里是怎么判断释放时机对不对的。</p>
@@ -161,7 +163,7 @@
     <img src="img/rim_p27.jpg" alt="专题第 27 页：重心分配" loading="lazy">
   </div>
   <div class="reply">
-    <span class="tag edge">Heygo 的回应 · 持续探索中</span>
+    <span class="tag edge">持续探索中</span>
     <h3>先从「压出来的效果」入手，再往动作本身走</h3>
     <p>Heygo 装在两只脚上，跟着雪板一起走，量到的是雪板的姿态和受力效果。身体往下压的那一下，最终会变成更深的立刃和更大的向心力，这些我们都能看到。</p>
     <p>下面几项是我们正在研究的方向，目标是把它们量得更准：</p>
