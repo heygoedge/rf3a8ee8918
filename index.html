@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>读《单板技术滑行中回转专题》· Heygo</title>
+<style>
+  :root { --ink:#1d2433; --sub:#5b6577; --line:#e6e9ef; --bg:#f6f7fb; --blue:#2a6fdb; --red:#e4572e; --green:#2e933c; --quote:#fff8ec; --quoteLine:#f0b44c; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; line-height:1.75; -webkit-text-size-adjust:100%; }
+  .wrap { max-width:880px; margin:0 auto; padding:28px 18px 60px; }
+  header h1 { font-size:26px; line-height:1.4; margin:8px 0 6px; }
+  header .by { color:var(--sub); font-size:14px; }
+  .lead { background:#fff; border-radius:14px; padding:18px 20px; margin:18px 0 8px; border:1px solid var(--line); }
+  .toc { font-size:14px; color:var(--sub); margin:10px 0 0; padding-left:18px; }
+  section { margin-top:36px; }
+  section > h2 { font-size:20px; margin:0 0 12px; display:flex; gap:10px; align-items:baseline; }
+  section > h2 .no { color:var(--blue); font-weight:700; }
+  .quote { background:var(--quote); border-left:4px solid var(--quoteLine); border-radius:10px; padding:14px 16px; }
+  .quote .src { font-size:12px; color:#a0752a; letter-spacing:.5px; margin-bottom:6px; }
+  .quote blockquote { margin:0; font-size:15px; color:#4a3b1f; }
+  .quote img { width:100%; border-radius:8px; margin-top:10px; border:1px solid #f1e3c4; display:block; }
+  .reply { background:#fff; border:1px solid var(--line); border-radius:12px; padding:16px 18px; margin-top:12px; position:relative; }
+  .reply .tag { display:inline-block; font-size:12px; color:#fff; background:var(--blue); border-radius:999px; padding:1px 10px; margin-bottom:8px; }
+  .reply .tag.new { background:var(--red); }
+  .reply .tag.edge { background:#7a8396; }
+  .reply h3 { font-size:17px; margin:2px 0 8px; }
+  .reply p { margin:8px 0; }
+  .reply ul { margin:6px 0; padding-left:20px; }
+  .reply img { width:100%; max-width:560px; margin-left:auto; margin-right:auto; border-radius:8px; margin:10px 0 4px; display:block; border:1px solid var(--line); }
+  .cap { font-size:13px; color:var(--sub); }
+  .kv { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0 6px; }
+  .kv div { background:var(--bg); border-radius:10px; padding:10px 8px; text-align:center; font-size:13px; color:var(--sub); }
+  .kv b { display:block; font-size:18px; color:var(--ink); }
+  .formula { font-size:18px; text-align:center; background:var(--bg); border-radius:10px; padding:10px; margin:10px 0; letter-spacing:.5px; }
+  .flow { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:10px 0; }
+  .flow div { background:var(--bg); border-radius:10px; padding:12px 10px; font-size:14px; }
+  .flow b { display:block; color:var(--blue); font-size:13px; margin-bottom:4px; }
+  .ask { background:#fff; border:2px solid var(--blue); border-radius:14px; padding:18px 20px; }
+  .ask ol { padding-left:20px; margin:8px 0 0; }
+  .ask li { margin:8px 0; }
+  .note { font-size:13px; color:var(--sub); background:var(--bg); border-radius:8px; padding:8px 12px; margin-top:10px; }
+  footer { margin-top:40px; font-size:12px; color:#98a0ae; text-align:center; }
+  @media (max-width:640px) { header h1 { font-size:22px; } .flow { grid-template-columns:1fr 1fr; } .kv b { font-size:16px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>读《单板技术滑行中回转专题》<br>几个可以用数据看见的地方</h1>
+  <div class="by">Heygo 团队 · 2026 年 10 月</div>
+</header>
+
+<div class="lead">
+  感谢分享这份专题。专题从动力链、压力、重心三条线讲中回转，其中关于「压力」的几处力学判断，我们用 Heygo 的脚上传感器，在覆盖从入门到高阶不同水平滑手的真实雪场滑行数据里逐一看了一遍。
+  <br>下面按专题的页码，把原文和我们看到的东西放在一起。
+  <ol class="toc">
+    <li>向心力公式 F = mv²/r：三个量都能测</li>
+    <li>Peak 点：数据里三件事确实同时发生</li>
+    <li>上半弧加压、下半弧释压：施压时机可以算出来</li>
+    <li>共振与出弯释放</li>
+    <li>传感器目前能看到什么、还看不到什么</li>
+    <li>我们是怎么算的（概要）</li>
+    <li>想听听你们的意见</li>
+  </ol>
+</div>
+
+<!-- 1 -->
+<section>
+  <h2><span class="no">01</span>向心力公式：三个量都能测</h2>
+  <div class="quote">
+    <div class="src">引自专题 · 第 18 页</div>
+    <blockquote>「F = mv² / r。F 越大，弯抓得越紧……速度越快，需要越大的向心力才能维持弯型……弯越紧，需要的向心力越大。」</blockquote>
+    <img src="img/rim_p18.jpg" alt="专题第 18 页：向心力公式" loading="lazy">
+  </div>
+  <div class="reply">
+    <span class="tag">Heygo 的回应 · App 已有</span>
+    <h3>公式里的速度、半径、向心力，Heygo App 里都有</h3>
+    <div class="kv">
+      <div><b>速度</b>v</div>
+      <div><b>转弯半径</b>r</div>
+      <div><b>离心力</b>每个弯的 G-Force</div>
+    </div>
+    <p>App 里的「离心力」（英文界面叫 G-Force）表示这个弯里雪板承受的侧向力相当于几倍体重。专题第 17 页问到向心力和离心作用：离心力就是滑手身上感受到的那一侧，大小和向心力相同，方向相反。</p>
+    <p><b>向心力和板压是什么关系？</b>雪对板的支撑力可以拆成两份：竖直的一份托住体重，站着不动也有；水平的一份指向弯心，就是向心力。两份合起来就是板压：</p>
+    <div class="formula">板压 = √(1 + 向心力²) 倍体重</div>
+    <img src="img/f1_force.png" alt="受力分解：板压由托住体重的部分和向心力合成" loading="lazy">
+    <p class="cap">例如向心力 1.3 倍体重时，板压约为 1.64 倍体重。向心力越大，板压越大，两者一一对应。</p>
+    <p>所以 App 里的离心力可以直接拿来看「这个弯压得有多深」。它反映的是压出来的效果：压得越狠，弯越紧，向心力越大。速度同样会推高它，比较两个弯时放在相近速度下看会更公平。</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section>
+  <h2><span class="no">02</span>Peak 点：数据里三件事确实同时发生</h2>
+  <div class="quote">
+    <div class="src">引自专题 · 第 20 页</div>
+    <blockquote>「弯型弧线最底部，板头指向与滚落线完全一致——立刃角度最大，重心最低……向心力最大。」</blockquote>
+    <img src="img/rim_p20.jpg" alt="专题第 20 页：Peak 点" loading="lazy">
+  </div>
+  <div class="reply">
+    <span class="tag">Heygo 的回应 · 数据印证</span>
+    <h3>走刃时，立刃最大的那一刻就落在滚落线上</h3>
+    <p>我们把大量走刃弯叠在一起看：立刃角在板头对准滚落线的时候达到最大，向心力也在这里进入全弯最高的一段。专题说的「板头对准滚落线、立刃最大、向心力最强」三件事同时发生，在真实滑行里是成立的。</p>
+    <img src="img/f2_peak.png" alt="走刃弯的立刃角和向心力曲线，峰值落在滚落线附近" loading="lazy">
+    <p class="cap">横轴是一个弯从入弯到出弯的进度，两条线各自按最大值缩放到 1。</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section>
+  <h2><span class="no">03</span>上半弧加压、下半弧释压：施压时机可以算出来</h2>
+  <div class="quote">
+    <div class="src">引自专题 · 第 15 页、第 21 页</div>
+    <blockquote>「中回转的精髓，在于上半弧做加法、下半弧做减法。」<br>「上半弧是『踩下去』，下半弧是『收回来』……典型后果：板尾扫雪、弯型不对称、出弯速度骤降。」</blockquote>
+    <img src="img/rim_p15.jpg" alt="专题第 15 页：弯型解剖" loading="lazy">
+    <img src="img/rim_p21.jpg" alt="专题第 21 页：下半弧为什么不能再继续施压" loading="lazy">
+  </div>
+  <div class="reply">
+    <span class="tag new">Heygo 的回应 · 已能计算，App 暂未上线</span>
+    <h3>看一个弯的压力有多少落在上半弧</h3>
+    <p>把一个弯里的向心力画成一条曲线，以板头对准滚落线的时刻为界，看压力有多少落在上半弧。这个比例就是「施压时机」：</p>
+    <ul>
+      <li><b>接近一半</b>：上半弧压起来、下半弧收回来，前后基本对称，就是专题说的「上半弧做加法、下半弧做减法」。</li>
+      <li><b>明显低于一半</b>：上半弧没压起来，力气留到了下半弧，对应专题第 21 页说的下半弧继续施压。</li>
+    </ul>
+    <img src="img/f3_timing.png" alt="走刃和搓雪的压力曲线与滚落线前压力占比分布" loading="lazy">
+    <p class="cap">上：走刃和搓雪的平均压力曲线，深色是滚落线之前的部分。下：每个弯的占比分布。</p>
+    <p>结果和专题的判断一致：走刃的弯，滚落线之前的压力大约占一半；搓雪的弯，大部分压力落在下半弧。我们逐个滑手对比过，每一位都是走刃时比自己搓雪时压得更靠前：同一个人换一种滑法，压力的位置就跟着变，说明这个比例反映的是动作本身。</p>
+    <div class="note">这个指标我们已经能算出来，Heygo App 里暂时还没有上线。要不要做进 App、做成什么样，想先听听你们的意见（见最后一节）。</div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section>
+  <h2><span class="no">04</span>共振与出弯释放</h2>
+  <div class="quote">
+    <div class="src">引自专题 · 第 24–25 页</div>
+    <blockquote>「入弯压弯板子，储存弹性势能；出弯瞬间释放压力，板子回弹……释放过早，感觉被板子顶了一下；释放过晚，感觉身体非常沉重，难以换刃。」</blockquote>
+    <img src="img/rim_p25.jpg" alt="专题第 25 页：共振的感觉" loading="lazy">
+  </div>
+  <div class="reply">
+    <span class="tag">Heygo 的回应 · App 已有一部分</span>
+    <h3>释放得够不够，App 里已经能看；释放得早还是晚，我们正在研究</h3>
+    <p>Heygo App 里的「压力释放」看的是换刃时旧弯的压力释放得够不够、顺不顺：释放充分，换刃更轻快，下一个弯接得更顺。</p>
+    <p>专题讲的「释放过早 / 过晚」是时机问题，和第 03 节的施压时机是一对：一个看什么时候压上去，一个看什么时候收回来。我们很想知道，你们在教学里是怎么判断释放时机对不对的。</p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section>
+  <h2><span class="no">05</span>传感器能看到什么、还看不到什么</h2>
+  <div class="quote">
+    <div class="src">引自专题 · 第 14 页、第 27 页</div>
+    <blockquote>「屈膝下蹲是向下加速运动，体重秤读数 = 自身重力 + 向下加速度附加力，这就是你对雪板施加的额外压力。」<br>「入弯阶段前脚 70%~80%……弯中阶段前脚 60%……出弯阶段前脚 50%。」</blockquote>
+    <img src="img/rim_p27.jpg" alt="专题第 27 页：重心分配" loading="lazy">
+  </div>
+  <div class="reply">
+    <span class="tag edge">Heygo 的回应 · 能力边界</span>
+    <h3>我们看到的是「压出来的效果」</h3>
+    <p>Heygo 装在两只脚上，跟着雪板一起走，量到的是雪板的姿态和受力效果。身体往下压的那一下，最终会变成更深的立刃和更大的向心力，这些我们都能看到。</p>
+    <p>下面几项目前还在我们的测量范围之外：</p>
+    <ul>
+      <li>身体下蹲、站起这个动作本身</li>
+      <li>前后脚的重心比例（专题第 27 页的 70% / 60% / 50%）</li>
+      <li>足弓力线和各个关节的发力顺序</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6 -->
+<section>
+  <h2><span class="no">06</span>我们是怎么算的（概要）</h2>
+  <div class="reply">
+    <div class="flow">
+      <div><b>① 记录</b>两只脚上的传感器记录每一刻的姿态和受力</div>
+      <div><b>② 切弯</b>自动识别每一个弯，找到入弯、滚落线和出弯</div>
+      <div><b>③ 分离</b>把重力和转弯产生的力分开，得到弯里的向心力曲线</div>
+      <div><b>④ 输出</b>每个弯给出离心力、立刃、压力释放，以及研究中的施压时机</div>
+    </div>
+    <p class="cap">本页的分析来自真实雪场滑行数据，覆盖从入门到高阶不同水平的滑手，走刃和搓雪都有。</p>
+  </div>
+</section>
+
+<!-- 7 -->
+<section>
+  <h2><span class="no">07</span>想听听你们的意见</h2>
+  <div class="ask">
+    <ol>
+      <li><b>施压时机这个指标，对你们的教学有用吗？</b>你们会怎么用：课后复盘、看学员前后的进步，还是别的场景？</li>
+      <li><b>如果需求大，我们会把它做进 App。</b>你们希望在 App 里看到什么样子：一个分数、一条压力曲线，还是一句教练式的提醒？</li>
+      <li><b>专题里还有哪些点，你们希望被量化？</b>比如释放的早晚、前刃和后刃的差异，或者你们教学里最难给学员讲清楚的那一步。</li>
+    </ol>
+  </div>
+</section>
+
+<footer>本页仅供 Heygo 共创伙伴交流使用，请勿转发。专题原文图片版权归原作者所有。</footer>
+</div>
+</body>
+</html>
